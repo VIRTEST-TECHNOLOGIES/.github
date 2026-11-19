@@ -1,0 +1,71 @@
+name: 🐛 Bug report
+description: Something isn't working as expected.
+title: "[Bug] "
+labels: ["type: bug", "status: needs-triage"]
+type: Bug
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happens
+      description: A short, clear description.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - "S1 – Critical: outage, data loss or security"
+        - "S2 – High: main flow broken, no workaround"
+        - "S3 – Medium: workaround available"
+        - "S4 – Low: cosmetic"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: env
+    attributes:
+      label: Environment
+      options: ["Production", "Staging", "Local / dev"]
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      placeholder: "v0.3.1 or abc1234"
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Browser, device, logs, screenshots
+      description: Logs are rendered as a code block automatically.
+      render: shell
+
+  - type: checkboxes
+    id: regression
+    attributes:
+      label: Regression
+      options:
+        - label: This worked in a previous version
