@@ -7,77 +7,28 @@ body:
   - type: markdown
     attributes:
       value: |
-        An **Epic** describes a shippable feature of the MVP. It is broken down into stories (sub-issues), which can live in any repository linked to the project.
-        Keep it focused on the *problem* and the *outcome*, not the implementation.
+        An **Epic** is a feature of the release, broken down into stories (sub-issues).
+        Only the first three fields are required — fill in the rest when it helps.
 
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What user pain does this solve? How do we know?
-      placeholder: "New users drop off at step 3 of onboarding (~40% according to analytics)…"
-    validations:
-      required: true
-
-  - type: textarea
-    id: hypothesis
-    attributes:
-      label: Hypothesis
-      description: What we believe will happen if we build it.
-      value: |
-        We believe that **[building this]**
-        for **[this user]**
-        will achieve **[this outcome]**.
-        We'll know it worked when we see **[metric / signal]**.
+      label: Problem / goal
+      description: What the user needs and why. One or two sentences is enough.
+      placeholder: "Users have to re-enter their measurements every time they open the app."
     validations:
       required: true
 
   - type: textarea
     id: scope_in
     attributes:
-      label: In scope (MVP)
-      description: The minimum that must exist for the feature to deliver value.
+      label: In scope
+      description: What must exist for this feature to be done in this release.
       placeholder: |
-        - Email sign-up
-        - Verification link
+        - Save measurements
+        - Load saved measurements when opening the app
     validations:
       required: true
-
-  - type: textarea
-    id: scope_out
-    attributes:
-      label: Out of scope
-      description: What is explicitly NOT part of this release (prevents scope creep).
-      placeholder: |
-        - Social login (Google/GitHub) → next release
-    validations:
-      required: true
-
-  - type: textarea
-    id: success_metrics
-    attributes:
-      label: Success metrics
-      placeholder: "- Onboarding conversion ≥ 70% within 2 weeks of launch"
-    validations:
-      required: true
-
-  - type: textarea
-    id: repos
-    attributes:
-      label: Affected repositories
-      description: Which repositories will need changes for this epic.
-      placeholder: |
-        - [ ] web-app
-        - [ ] api
-
-  - type: textarea
-    id: stories
-    attributes:
-      label: Stories / sub-issues
-      description: Initial list. Then create them in each repository and add them as sub-issues.
-      placeholder: |
-        - [ ] As a new user I want to…
-        - [ ] As an admin I want to…
 
   - type: dropdown
     id: priority
@@ -90,15 +41,33 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: links
+  - type: textarea
+    id: scope_out
     attributes:
-      label: Design / docs
-      description: Figma, spec, PRD, research…
-      placeholder: https://
+      label: Out of scope
+      description: What is explicitly NOT part of this release.
+      placeholder: |
+        - Measurement history / charts → next release
 
   - type: textarea
-    id: risks
+    id: stories
     attributes:
-      label: Risks & dependencies
-      placeholder: "- Depends on the payments API (team X)"
+      label: Stories
+      description: Initial list. Create them as sub-issues in the repository where the code changes.
+      placeholder: |
+        - [ ] As a user I want to save my measurements…
+        - [ ] As a user I want to see my saved measurements…
+
+  - type: textarea
+    id: success
+    attributes:
+      label: How we'll know it works
+      placeholder: "- 80% of active users have saved measurements after 2 weeks"
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Design, links, risks
+      placeholder: |
+        - Figma: https://
+        - Depends on …
