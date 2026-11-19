@@ -1,0 +1,104 @@
+name: 🎯 Epic / Feature
+description: A complete feature for the release. Groups user stories and tasks.
+title: "[Epic] "
+labels: ["type: epic", "status: needs-triage"]
+type: Epic
+body:
+  - type: markdown
+    attributes:
+      value: |
+        An **Epic** describes a shippable feature of the MVP. It is broken down into stories (sub-issues), which can live in any repository linked to the project.
+        Keep it focused on the *problem* and the *outcome*, not the implementation.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user pain does this solve? How do we know?
+      placeholder: "New users drop off at step 3 of onboarding (~40% according to analytics)…"
+    validations:
+      required: true
+
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Hypothesis
+      description: What we believe will happen if we build it.
+      value: |
+        We believe that **[building this]**
+        for **[this user]**
+        will achieve **[this outcome]**.
+        We'll know it worked when we see **[metric / signal]**.
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope_in
+    attributes:
+      label: In scope (MVP)
+      description: The minimum that must exist for the feature to deliver value.
+      placeholder: |
+        - Email sign-up
+        - Verification link
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope_out
+    attributes:
+      label: Out of scope
+      description: What is explicitly NOT part of this release (prevents scope creep).
+      placeholder: |
+        - Social login (Google/GitHub) → next release
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_metrics
+    attributes:
+      label: Success metrics
+      placeholder: "- Onboarding conversion ≥ 70% within 2 weeks of launch"
+    validations:
+      required: true
+
+  - type: textarea
+    id: repos
+    attributes:
+      label: Affected repositories
+      description: Which repositories will need changes for this epic.
+      placeholder: |
+        - [ ] web-app
+        - [ ] api
+
+  - type: textarea
+    id: stories
+    attributes:
+      label: Stories / sub-issues
+      description: Initial list. Then create them in each repository and add them as sub-issues.
+      placeholder: |
+        - [ ] As a new user I want to…
+        - [ ] As an admin I want to…
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - "P0 – Blocks the release"
+        - "P1 – Important for the release"
+        - "P2 – Nice to have"
+    validations:
+      required: true
+
+  - type: input
+    id: links
+    attributes:
+      label: Design / docs
+      description: Figma, spec, PRD, research…
+      placeholder: https://
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks & dependencies
+      placeholder: "- Depends on the payments API (team X)"
