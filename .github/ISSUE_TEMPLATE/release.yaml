@@ -1,0 +1,93 @@
+name: 🚀 Release checklist
+description: Tracking issue to prepare, ship and validate a release across repositories.
+title: "[Release] v"
+labels: ["type: release"]
+type: Release
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "v0.4.0"
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Target date
+      placeholder: "2026-12-15"
+    validations:
+      required: true
+
+  - type: input
+    id: owner
+    attributes:
+      label: Release owner
+      placeholder: "@username"
+    validations:
+      required: true
+
+  - type: textarea
+    id: epics
+    attributes:
+      label: Included epics
+      placeholder: |
+        - #12 Email onboarding
+        - #18 Basic dashboard
+    validations:
+      required: true
+
+  - type: textarea
+    id: repos
+    attributes:
+      label: Repositories & versions to deploy
+      description: Include deployment order if there are dependencies between repositories.
+      value: |
+        | Repository | Version / tag | Order | Owner |
+        |---|---|---|---|
+        | api | v0.4.0 | 1 | @ |
+        | web-app | v0.4.0 | 2 | @ |
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: pre
+    attributes:
+      label: Pre-launch
+      options:
+        - label: All P0 issues in the milestone closed in EVERY repository
+        - label: Versions compatible across repositories (API contracts, migrations)
+        - label: Feature flags configured (if applicable)
+        - label: Acceptance criteria verified in staging
+        - label: Database migrations tested in staging
+        - label: Analytics / success-metric events instrumented
+        - label: Monitoring and alerts in place
+        - label: Rollback plan documented
+        - label: Changelog and release notes written
+
+  - type: checkboxes
+    id: launch
+    attributes:
+      label: Launch
+      options:
+        - label: Tag and GitHub Release published in each repository
+        - label: Production deploy in the agreed order
+        - label: Smoke test in production
+        - label: Announcement sent (users / team / stakeholders)
+
+  - type: checkboxes
+    id: post
+    attributes:
+      label: Post-launch
+      options:
+        - label: 24-48 h of monitoring with no S1/S2 incidents
+        - label: Success metrics reviewed (1-2 weeks)
+        - label: Release retrospective
+        - label: Unfinished issues moved to the next milestone (in each repository)
+
+  - type: textarea
+    id: rollback
+    attributes:
+      label: Rollback plan
+      placeholder: "Revert to tag v0.3.2 with… / turn off the `new_onboarding` flag"
