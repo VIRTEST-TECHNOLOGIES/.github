@@ -1,0 +1,42 @@
+name: 🔧 Technical task
+description: Technical work with no directly visible user value (setup, refactor, infra, tech debt).
+title: "[Task] "
+labels: ["type: task"]
+type: Task
+body:
+  - type: input
+    id: parent
+    attributes:
+      label: Parent issue
+      description: Story or epic this belongs to (if any).
+      placeholder: "#34 or my-org/product#12"
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What needs to be done
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What it unblocks or what risk it reduces.
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when…
+      value: |
+        - [ ]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: size
+    attributes:
+      label: Estimated size
+      options: ["XS", "S", "M", "L", "XL"]
